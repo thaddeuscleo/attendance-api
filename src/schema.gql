@@ -3,28 +3,69 @@
 # ------------------------------------------------------
 
 type Children {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Children ID"""
+  id: String!
+
+  """Children name"""
+  name: String!
+
+  """Children surname"""
+  surname: String!
+
+  """Children parent name"""
+  parentName: String!
+
+  """Children borndate"""
+  bornDate: DateTime!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Query {
   childrens: [Children!]!
-  children(id: Int!): Children!
+  children(id: String!): Children!
 }
 
 type Mutation {
   createChildren(createChildrenInput: CreateChildrenInput!): Children!
   updateChildren(updateChildrenInput: UpdateChildrenInput!): Children!
-  removeChildren(id: Int!): Children!
+  removeChildren(id: String!): Children!
 }
 
 input CreateChildrenInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Children ID"""
+  name: String!
+
+  """Children borndate"""
+  bornDate: String!
+
+  """Children parent name"""
+  parentName: String!
+
+  """Children surname"""
+  surname: String!
+
+  """Children category"""
+  categoryId: String!
 }
 
 input UpdateChildrenInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  """Children ID"""
+  name: String
+
+  """Children borndate"""
+  bornDate: String
+
+  """Children parent name"""
+  parentName: String
+
+  """Children surname"""
+  surname: String
+
+  """Children category"""
+  categoryId: String
+  id: String!
 }

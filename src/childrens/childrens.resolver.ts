@@ -19,17 +19,17 @@ export class ChildrensResolver {
   }
 
   @Query(() => Children, { name: 'children' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id', { type: () => String }) id: string) {
     return this.childrensService.findOne(id);
   }
 
   @Mutation(() => Children)
   updateChildren(@Args('updateChildrenInput') updateChildrenInput: UpdateChildrenInput) {
-    return this.childrensService.update(updateChildrenInput.id, updateChildrenInput);
+    return this.childrensService.update(updateChildrenInput);
   }
 
   @Mutation(() => Children)
-  removeChildren(@Args('id', { type: () => Int }) id: number) {
+  removeChildren(@Args('id', { type: () => String }) id: string) {
     return this.childrensService.remove(id);
   }
 }
