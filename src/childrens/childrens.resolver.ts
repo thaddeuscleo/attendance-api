@@ -1,8 +1,10 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ResolveField, Parent } from '@nestjs/graphql';
 import { ChildrensService } from './childrens.service';
 import { Children } from './entities/children.entity';
 import { CreateChildrenInput } from './dto/create-children.input';
 import { UpdateChildrenInput } from './dto/update-children.input';
+import { Logger } from '@nestjs/common';
+import { Category } from './../categories/entities/category.entity';
 
 @Resolver(() => Children)
 export class ChildrensResolver {
@@ -31,5 +33,10 @@ export class ChildrensResolver {
   @Mutation(() => Children)
   removeChildren(@Args('id', { type: () => String }) id: string) {
     return this.childrensService.remove(id);
+  }
+
+  @ResolveField(() => Category)
+  category(@Parent() children: Children) {
+    return this.childrensService.findChildrenCategory(children.id);
   }
 }

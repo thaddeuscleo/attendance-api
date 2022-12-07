@@ -5,7 +5,24 @@ const prisma = new PrismaClient();
 
 const main = async () => {
   // Delete all children
+  await prisma.category.deleteMany({});
   await prisma.children.deleteMany({});
+
+  // const category = ['teens', 'toddlers', 'kids']
+  
+  const category = []
+
+  await prisma.category.createMany({
+    data: [...category.map((name) => ({name}))]
+  })
+
+  let categoryIdRes = await prisma.category.findMany({
+    select: {
+      id: true
+    }
+  })
+
+  let categoryIdList = [...categoryIdRes.map((data) => (data.id))]
 
   for (let idx = 0; idx < 10; idx++) {
     const fullname: string = faker.name.fullName();
@@ -15,7 +32,7 @@ const main = async () => {
         bornDate: new Date(),
         parentName: faker.name.fullName(),
         surname: fullname.split(' ')[0],
-        categoryId: undefined
+        categoryId: faker.helpers.arrayElement(categoryIdList)
       },
     });
   }

@@ -66,4 +66,16 @@ export class ChildrensService {
       }
     });
   }
+
+  async findChildrenCategory(childrenId: string) {
+    return await this.prisma.category.findFirst({
+      where: {
+        childrens: {
+          some: {
+            id: childrenId
+          }
+        }
+      }
+    })
+  }
 }

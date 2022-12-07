@@ -2,6 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Category {
+  """Category ID"""
+  id: String!
+
+  """Category name"""
+  name: String!
+
+  """Childrens in a category"""
+  childrens: [Children!]!
+}
+
 type Children {
   """Children ID"""
   id: String!
@@ -17,6 +28,9 @@ type Children {
 
   """Children borndate"""
   bornDate: DateTime!
+
+  """Children category"""
+  category: Category
 }
 
 """
