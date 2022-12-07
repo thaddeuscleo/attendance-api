@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Children {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Query {
+  childrens: [Children!]!
+  children(id: Int!): Children!
+}
+
+type Mutation {
+  createChildren(createChildrenInput: CreateChildrenInput!): Children!
+  updateChildren(updateChildrenInput: UpdateChildrenInput!): Children!
+  removeChildren(id: Int!): Children!
+}
+
+input CreateChildrenInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateChildrenInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
