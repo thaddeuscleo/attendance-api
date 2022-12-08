@@ -18,9 +18,17 @@ model Children {
   bornDate   DateTime
   category   Category? @relation(fields: [categoryId], references: [id])
   categoryId String?
+  Event      Event?    @relation(fields: [eventId], references: [id])
+  eventId    String?
 }
 
 model Category {
+  id        String     @id @default(uuid())
+  name      String
+  childrens Children[]
+}
+
+model Event {
   id        String     @id @default(uuid())
   name      String
   childrens Children[]
