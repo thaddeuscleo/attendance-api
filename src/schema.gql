@@ -2,17 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Category {
-  """Category ID"""
-  id: String!
-
-  """Category name"""
-  name: String!
-
-  """Childrens in a category"""
-  childrens: [Children!]!
-}
-
 type Children {
   """Children ID"""
   id: String!
@@ -38,15 +27,31 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Category {
+  """Category ID"""
+  id: String!
+
+  """Category name"""
+  name: String!
+
+  """Childrens in a category"""
+  childrens: [Children!]!
+}
+
 type Query {
   childrens: [Children!]!
   children(id: String!): Children!
+  categories: [Category!]!
+  category(id: String!): Category!
 }
 
 type Mutation {
   createChildren(createChildrenInput: CreateChildrenInput!): Children!
   updateChildren(updateChildrenInput: UpdateChildrenInput!): Children!
   removeChildren(id: String!): Children!
+  createCategory(createCategoryInput: CreateCategoryInput!): Category!
+  updateCategory(updateCategoryInput: UpdateCategoryInput!): Category!
+  removeCategory(id: String!): Category!
 }
 
 input CreateChildrenInput {
@@ -81,5 +86,16 @@ input UpdateChildrenInput {
 
   """Children category"""
   categoryId: String
+  id: String!
+}
+
+input CreateCategoryInput {
+  """Example field (placeholder)"""
+  name: String!
+}
+
+input UpdateCategoryInput {
+  """Example field (placeholder)"""
+  name: String
   id: String!
 }

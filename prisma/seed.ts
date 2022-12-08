@@ -8,9 +8,8 @@ const main = async () => {
   await prisma.category.deleteMany({});
   await prisma.children.deleteMany({});
 
-  // const category = ['teens', 'toddlers', 'kids']
+  const category = ['teens', 'toddlers', 'kids']
   
-  const category = []
 
   await prisma.category.createMany({
     data: [...category.map((name) => ({name}))]
