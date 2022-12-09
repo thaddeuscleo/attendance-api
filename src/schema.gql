@@ -52,6 +52,14 @@ type Event {
   childrens: [Children!]!
 }
 
+type Admin {
+  """Example field (placeholder)"""
+  exampleField: Int!
+
+  """Example field (placeholder)"""
+  email: String!
+}
+
 type Query {
   childrens: [Children!]!
   children(id: String!): Children!
@@ -59,6 +67,8 @@ type Query {
   category(id: String!): Category!
   events: [Event!]!
   event(id: String!): Event!
+  admins: [Admin!]!
+  admin(id: Int!): Admin!
 }
 
 type Mutation {
@@ -71,6 +81,10 @@ type Mutation {
   createEvent(createEventInput: CreateEventInput!): Event!
   updateEvent(updateEventInput: UpdateEventInput!): Event!
   removeEvent(id: String!): Event!
+  createAdmin(createAdminInput: CreateAdminInput!): Admin!
+  updateAdmin(updateAdminInput: UpdateAdminInput!): Admin!
+  removeAdmin(id: Int!): Admin!
+  login(loginAdminInput: LoginAdminInput!): String!
 }
 
 input CreateChildrenInput {
@@ -128,4 +142,23 @@ input UpdateEventInput {
   """Example field (placeholder)"""
   name: String
   id: String!
+}
+
+input CreateAdminInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateAdminInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input LoginAdminInput {
+  """Example field (placeholder)"""
+  email: String!
+
+  """Example field (placeholder)"""
+  password: String!
 }

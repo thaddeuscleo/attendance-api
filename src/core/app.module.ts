@@ -5,6 +5,7 @@ import { join } from 'path';
 import { EventsModule } from './../events/events.module';
 import { CategoriesModule } from './../categories/categories.module';
 import { ChildrensModule } from './../childrens/childrens.module';
+import { AdminsModule } from 'src/admins/admins.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ChildrensModule } from './../childrens/childrens.module';
     ChildrensModule,
     CategoriesModule,
     EventsModule,
+    AdminsModule
   ],
 })
 export class AppModule {}

@@ -8,6 +8,17 @@ const main = async () => {
   await prisma.category.deleteMany({});
   await prisma.event.deleteMany({});
   await prisma.children.deleteMany({});
+  await prisma.admin.deleteMany({});
+
+
+  // Admin
+  await prisma.admin.create({
+    data: {
+      name: "admin",
+      email: "admin@email.com",
+      password: "password",
+    }
+  })
 
   // Categories
   const category = ['teens', 'toddlers', 'kids'];
@@ -72,6 +83,8 @@ const main = async () => {
       },
     });
   });
+
+  
 };
 
 main()
