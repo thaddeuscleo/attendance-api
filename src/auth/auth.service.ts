@@ -35,12 +35,12 @@ export class AuthService {
   }
 
   async login({ email, password }: LoginAdminInput) {
-    const {name} = await this.validateAdmin(email, password);
+    const user = await this.validateAdmin(email, password);
 
-    if (name) {
+    if (user) {
       return this.jwtService.sign({
         email,
-        name,
+        name: user.name,
       });
     }
 

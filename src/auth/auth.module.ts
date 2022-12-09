@@ -8,7 +8,7 @@ import { JwtStrategy } from './jwt.strategy';
   imports: [PrismaModule, JwtModule.register({
     secret: 'secret',
     signOptions: {
-      expiresIn: '1000s'
+      expiresIn: '10s'
     }
   })],
   providers: [AuthService, JwtStrategy],
