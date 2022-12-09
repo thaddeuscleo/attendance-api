@@ -1,4 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
+import { Event } from 'src/events/entities/event.entity';
 import { Category } from './../../categories/entities/category.entity';
 
 @ObjectType()
@@ -18,6 +19,9 @@ export class Children {
   @Field(() => Date, { description: 'Children borndate' })
   bornDate: Date;
 
-  @Field(() => Category, { description: 'Children category', nullable: true })
+  @Field(() => Category, { description: 'Children category' })
   category?: Category;
+
+  @Field(() => [Event], { description: 'Events attended by the children' })
+  events?: Event[];
 }

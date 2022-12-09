@@ -18,8 +18,7 @@ model Children {
   bornDate   DateTime
   category   Category? @relation(fields: [categoryId], references: [id])
   categoryId String?
-  Event      Event?    @relation(fields: [eventId], references: [id])
-  eventId    String?
+  events     Event[]
 }
 
 model Category {

@@ -6,35 +6,72 @@ const prisma = new PrismaClient();
 const main = async () => {
   // Delete all children
   await prisma.category.deleteMany({});
+  await prisma.event.deleteMany({});
   await prisma.children.deleteMany({});
 
-  const category = ['teens', 'toddlers', 'kids']
-  
-
+  // Categories
+  const category = ['teens', 'toddlers', 'kids'];
   await prisma.category.createMany({
-    data: [...category.map((name) => ({name}))]
-  })
-
+    data: [...category.map((name) => ({ name }))],
+  });
   let categoryIdRes = await prisma.category.findMany({
     select: {
-      id: true
-    }
-  })
+      id: true,
+    },
+  });
+  let categoryIdList = [...categoryIdRes.map((data) => data.id)];
 
-  let categoryIdList = [...categoryIdRes.map((data) => (data.id))]
+  // Events
+  await prisma.event.createMany({
+    data: [
+      ...Array(12)
+        .fill(1)
+        .map(() => ({
+          name: faker.animal.lion(),
+        })),
+    ],
+  });
 
-  for (let idx = 0; idx < 10; idx++) {
-    const fullname: string = faker.name.fullName();
-    await prisma.children.create({
+  let eventsIdRes = await prisma.event.findMany({
+    select: {
+      id: true,
+    },
+  });
+
+  // Childrens
+  await prisma.children.createMany({
+    data: [
+      ...Array(10)
+        .fill(1)
+        .map(() => ({
+          name: faker.name.fullName(),
+          bornDate: new Date(),
+          parentName: faker.name.fullName(),
+          surname: faker.name.fullName().split(' ')[0],
+          categoryId: faker.helpers.arrayElement(categoryIdList),
+        })),
+    ],
+  });
+
+  let childrensIdRes = await prisma.children.findMany({
+    select: {
+      id: true,
+    },
+  });
+  let childrens = [...childrensIdRes.map((data) => data.id)];
+
+  childrens.forEach(async (id) => {
+    await prisma.children.update({
       data: {
-        name: fullname,
-        bornDate: new Date(),
-        parentName: faker.name.fullName(),
-        surname: fullname.split(' ')[0],
-        categoryId: faker.helpers.arrayElement(categoryIdList)
+        events: {
+          connect: eventsIdRes,
+        },
+      },
+      where: {
+        id,
       },
     });
-  }
+  });
 };
 
 main()
