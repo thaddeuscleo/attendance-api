@@ -5,14 +5,13 @@ import { UpdateCategoryInput } from './dto/update-category.input';
 
 @Injectable()
 export class CategoriesService {
-
   constructor(private readonly prisma: PrismaService) {}
 
-  create({name}: CreateCategoryInput) {
+  create({ name }: CreateCategoryInput) {
     return this.prisma.category.create({
       data: {
         name,
-      }
+      },
     });
   }
 
@@ -23,35 +22,35 @@ export class CategoriesService {
   findOne(id: string) {
     return this.prisma.category.findFirst({
       where: {
-        id
-      }
+        id,
+      },
     });
   }
 
-  update({id, name}: UpdateCategoryInput) {
+  update({ id, name }: UpdateCategoryInput) {
     return this.prisma.category.update({
       where: {
-        id
+        id,
       },
       data: {
-        name
-      }
+        name,
+      },
     });
   }
 
   remove(id: string) {
     return this.prisma.category.delete({
       where: {
-        id
-      }
+        id,
+      },
     });
   }
 
   findChildrenInCategory(categoryId: string) {
     return this.prisma.children.findMany({
       where: {
-        categoryId
-      }
-    })
+        categoryId,
+      },
+    });
   }
 }

@@ -20,7 +20,11 @@ export class EventsService {
   }
 
   findOne(id: string) {
-    return this.prisma.event.findFirst();
+    return this.prisma.event.findFirst({
+      where: {
+        id,
+      },
+    });
   }
 
   update({ id, name }: UpdateEventInput) {
@@ -47,9 +51,9 @@ export class EventsService {
       where: {
         events: {
           some: {
-            id
-          }
-        }
+            id,
+          },
+        },
       },
     });
   }

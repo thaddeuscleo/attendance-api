@@ -32,8 +32,8 @@ export class ChildrensService {
   findOne(id: string) {
     return this.prisma.children.findFirst({
       where: {
-        id
-      }
+        id,
+      },
     });
   }
 
@@ -62,8 +62,8 @@ export class ChildrensService {
   remove(id: string) {
     return this.prisma.children.delete({
       where: {
-        id
-      }
+        id,
+      },
     });
   }
 
@@ -72,10 +72,10 @@ export class ChildrensService {
       where: {
         childrens: {
           some: {
-            id: childrenId
-          }
-        }
-      }
-    })
+            id: childrenId,
+          },
+        },
+      },
+    });
   }
 }

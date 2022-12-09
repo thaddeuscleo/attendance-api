@@ -1,11 +1,14 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
 export class CreateChildrenInput {
   @Field(() => String, { description: 'Children ID' })
   name: string;
 
-  @Field(() => String, { description: 'Children borndate', defaultValue: undefined})
+  @Field(() => String, {
+    description: 'Children borndate',
+    defaultValue: undefined,
+  })
   bornDate: Date;
 
   @Field(() => String, { description: 'Children parent name' })

@@ -14,7 +14,7 @@ import { ChildrensModule } from './../childrens/childrens.module';
     }),
     ChildrensModule,
     CategoriesModule,
-    EventsModule
+    EventsModule,
   ],
 })
 export class AppModule {}
