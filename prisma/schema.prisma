@@ -32,3 +32,10 @@ model Event {
   name      String
   childrens Children[]
 }
+
+model Admin {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+}
