@@ -16,7 +16,7 @@ import { AdminsModule } from 'src/admins/admins.module';
     ChildrensModule,
     CategoriesModule,
     EventsModule,
-    AdminsModule
+    AdminsModule,
   ],
 })
 export class AppModule {}

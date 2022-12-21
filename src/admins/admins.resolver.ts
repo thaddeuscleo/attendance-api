@@ -8,10 +8,12 @@ import { AuthService } from './../auth/auth.service';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from 'src/auth/gql-auth-guard.guard';
 
-
 @Resolver(() => Admin)
 export class AdminsResolver {
-  constructor(private readonly adminsService: AdminsService, private readonly authService: AuthService) {}
+  constructor(
+    private readonly adminsService: AdminsService,
+    private readonly authService: AuthService,
+  ) {}
 
   @Mutation(() => Admin)
   @UseGuards(GqlAuthGuard)
@@ -27,24 +29,30 @@ export class AdminsResolver {
 
   @Query(() => Admin, { name: 'admin' })
   @UseGuards(GqlAuthGuard)
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id', { type: () => String }) id: string) {
     return this.adminsService.findOne(id);
   }
 
   @Mutation(() => Admin)
   @UseGuards(GqlAuthGuard)
   updateAdmin(@Args('updateAdminInput') updateAdminInput: UpdateAdminInput) {
-    return this.adminsService.update(updateAdminInput.id, updateAdminInput);
+    return this.adminsService.update(updateAdminInput);
   }
 
   @Mutation(() => Admin)
   @UseGuards(GqlAuthGuard)
-  removeAdmin(@Args('id', { type: () => Int }) id: number) {
+  removeAdmin(@Args('id', { type: () => String }) id: string) {
     return this.adminsService.remove(id);
   }
 
   @Mutation(() => String)
   login(@Args('loginAdminInput') loginAdminInput: LoginAdminInput) {
     return this.authService.login(loginAdminInput);
+  }
+
+  @Mutation(() => String)
+  @UseGuards(GqlAuthGuard)
+  verifyAdminToken(token: string) {
+    return this.authService.verify(token);
   }
 }

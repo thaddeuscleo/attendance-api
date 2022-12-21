@@ -39,11 +39,14 @@ export class AuthService {
 
     if (user) {
       return this.jwtService.sign({
-        email,
-        name: user.name,
+        id: user.id,
       });
     }
 
     return undefined;
+  }
+
+  async verify(token: string) {
+    return true;
   }
 }
