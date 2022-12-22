@@ -6,9 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Children {
@@ -20,8 +19,6 @@ model Children {
   category   Category? @relation(fields: [categoryId], references: [id])
   categoryId String?
   events     Event[]
-
-  @@index([categoryId])
 }
 
 model Category {
