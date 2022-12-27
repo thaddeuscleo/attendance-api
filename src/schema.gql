@@ -83,6 +83,7 @@ type Mutation {
   removeCategory(id: String!): Category!
   createEvent(createEventInput: CreateEventInput!): Event!
   updateEvent(updateEventInput: UpdateEventInput!): Event!
+  removeChildrenOnEvent(removeChildrenOnEventInput: RemoveChildrenOnEventInput!): Event!
   removeEvent(id: String!): Event!
   createAdmin(createAdminInput: CreateAdminInput!): Admin!
   updateAdmin(updateAdminInput: UpdateAdminInput!): Admin!
@@ -138,14 +139,28 @@ input UpdateCategoryInput {
 }
 
 input CreateEventInput {
-  """Example field (placeholder)"""
+  """Event name"""
   name: String!
+
+  """ChildrenId list"""
+  childrens: [String!] = []
 }
 
 input UpdateEventInput {
-  """Example field (placeholder)"""
+  """Event name"""
   name: String
+
+  """ChildrenId list"""
+  childrens: [String!] = []
   id: String!
+}
+
+input RemoveChildrenOnEventInput {
+  """Event ID"""
+  id: String!
+
+  """ChildrenId list"""
+  childrens: [String!]! = []
 }
 
 input CreateAdminInput {

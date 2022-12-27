@@ -12,6 +12,7 @@ import { CreateEventInput } from './dto/create-event.input';
 import { UpdateEventInput } from './dto/update-event.input';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from 'src/auth/gql-auth-guard.guard';
+import { RemoveChildrenOnEventInput } from './dto/remove-children-on-event-input';
 
 @Resolver(() => Event)
 export class EventsResolver {
@@ -39,6 +40,12 @@ export class EventsResolver {
   @UseGuards(GqlAuthGuard)
   updateEvent(@Args('updateEventInput') updateEventInput: UpdateEventInput) {
     return this.eventsService.update(updateEventInput);
+  }
+
+  @Mutation(() => Event)
+  @UseGuards(GqlAuthGuard)
+  removeChildrenOnEvent(@Args('removeChildrenOnEventInput') removeChildrenOnEventInput: RemoveChildrenOnEventInput) {
+    return this.eventsService.removeChildrenConnection(removeChildrenOnEventInput);
   }
 
   @Mutation(() => Event)

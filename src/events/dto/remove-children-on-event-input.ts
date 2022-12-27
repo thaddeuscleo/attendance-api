@@ -1,14 +1,13 @@
 import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
-export class CreateEventInput {
-  @Field(() => String, { description: 'Event name' })
-  name: string;
+export class RemoveChildrenOnEventInput {
+  @Field(() => String, { description: 'Event ID' })
+  id: string;
 
   @Field(() => [String], {
     description: 'ChildrenId list',
-    nullable: true,
     defaultValue: [],
   })
-  childrens?: string[];
+  childrens: string[];
 }
