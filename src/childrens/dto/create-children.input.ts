@@ -5,7 +5,7 @@ export class CreateChildrenInput {
   @Field(() => String, { description: 'Children ID' })
   name: string;
 
-  @Field(() => String, {
+  @Field(() => Date, {
     description: 'Children borndate',
     defaultValue: undefined,
   })
