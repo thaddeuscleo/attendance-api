@@ -9,6 +9,12 @@ export class Event {
   @Field(() => String, { description: 'Event name' })
   name: string;
 
+  @Field(() => Date, { description: 'Event name' })
+  startDateTime: Date;
+
+  @Field(() => Date, { description: 'Event name' })
+  endDateTime: Date;
+
   @Field(() => [Children], { description: 'List of childrens in a event' })
   childrens?: Children[];
 }

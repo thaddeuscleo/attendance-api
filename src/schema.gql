@@ -48,6 +48,12 @@ type Event {
   """Event name"""
   name: String!
 
+  """Event name"""
+  startDateTime: DateTime!
+
+  """Event name"""
+  endDateTime: DateTime!
+
   """List of childrens in a event"""
   childrens: [Children!]!
 }
@@ -142,6 +148,12 @@ input CreateEventInput {
   """Event name"""
   name: String!
 
+  """Event name"""
+  startDateTime: DateTime!
+
+  """Event name"""
+  endDateTime: DateTime!
+
   """ChildrenId list"""
   childrens: [String!] = []
 }
@@ -149,6 +161,12 @@ input CreateEventInput {
 input UpdateEventInput {
   """Event name"""
   name: String
+
+  """Event name"""
+  startDateTime: DateTime
+
+  """Event name"""
+  endDateTime: DateTime
 
   """ChildrenId list"""
   childrens: [String!] = []

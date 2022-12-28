@@ -28,9 +28,11 @@ model Category {
 }
 
 model Event {
-  id        String     @id @default(uuid())
-  name      String
-  childrens Children[]
+  id            String     @id @default(uuid())
+  name          String
+  startDateTime DateTime
+  endDateTime   DateTime
+  childrens     Children[]
 }
 
 model Admin {

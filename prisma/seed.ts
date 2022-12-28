@@ -10,15 +10,14 @@ const main = async () => {
   await prisma.children.deleteMany({});
   await prisma.admin.deleteMany({});
 
-
   // Admin
   await prisma.admin.create({
     data: {
-      name: "admin",
-      email: "admin@email.com",
-      password: "password",
-    }
-  })
+      name: 'admin',
+      email: 'admin@email.com',
+      password: 'password',
+    },
+  });
 
   // Categories
   const category = ['teens', 'toddlers', 'kids'];
@@ -39,6 +38,8 @@ const main = async () => {
         .fill(1)
         .map(() => ({
           name: faker.animal.lion(),
+          startDateTime: faker.date.past(),
+          endDateTime: faker.date.future(),
         })),
     ],
   });
@@ -83,8 +84,6 @@ const main = async () => {
       },
     });
   });
-
-  
 };
 
 main()

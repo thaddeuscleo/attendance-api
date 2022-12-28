@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateEventInput } from './dto/create-event.input';
 import { RemoveChildrenOnEventInput } from './dto/remove-children-on-event-input';
@@ -8,10 +8,12 @@ import { UpdateEventInput } from './dto/update-event.input';
 export class EventsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create({ name }: CreateEventInput) {
+  create({ name, startDateTime, endDateTime }: CreateEventInput) {
     return this.prisma.event.create({
       data: {
         name,
+        startDateTime,
+        endDateTime,
       },
     });
   }
@@ -42,18 +44,20 @@ export class EventsService {
     });
   }
 
-  async removeChildrenConnection({id, childrens}: RemoveChildrenOnEventInput) {
-    Logger.debug(JSON.stringify(childrens))
+  async removeChildrenConnection({
+    id,
+    childrens,
+  }: RemoveChildrenOnEventInput) {
     return await this.prisma.event.update({
       where: {
         id,
       },
       data: {
         childrens: {
-          disconnect: [...childrens.map((id) => ({ id }))]
+          disconnect: [...childrens.map((id) => ({ id }))],
         },
       },
-    })
+    });
   }
 
   remove(id: string) {

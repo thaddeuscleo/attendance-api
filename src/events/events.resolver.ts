@@ -44,8 +44,13 @@ export class EventsResolver {
 
   @Mutation(() => Event)
   @UseGuards(GqlAuthGuard)
-  removeChildrenOnEvent(@Args('removeChildrenOnEventInput') removeChildrenOnEventInput: RemoveChildrenOnEventInput) {
-    return this.eventsService.removeChildrenConnection(removeChildrenOnEventInput);
+  removeChildrenOnEvent(
+    @Args('removeChildrenOnEventInput')
+    removeChildrenOnEventInput: RemoveChildrenOnEventInput,
+  ) {
+    return this.eventsService.removeChildrenConnection(
+      removeChildrenOnEventInput,
+    );
   }
 
   @Mutation(() => Event)
