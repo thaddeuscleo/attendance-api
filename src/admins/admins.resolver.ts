@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { AdminsService } from './admins.service';
 import { Admin } from './entities/admin.entity';
 import { CreateAdminInput } from './dto/create-admin.input';
@@ -48,11 +48,5 @@ export class AdminsResolver {
   @Mutation(() => String)
   login(@Args('loginAdminInput') loginAdminInput: LoginAdminInput) {
     return this.authService.login(loginAdminInput);
-  }
-
-  @Mutation(() => String)
-  @UseGuards(GqlAuthGuard)
-  verifyAdminToken(token: string) {
-    return this.authService.verify(token);
   }
 }

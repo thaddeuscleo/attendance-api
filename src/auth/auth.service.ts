@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { Admin } from 'src/admins/entities/admin.entity';
 import { LoginAdminInput } from './../admins/dto/login-admin.input';
 import { PrismaService } from './../prisma/prisma.service';
 
@@ -44,9 +43,5 @@ export class AuthService {
     }
 
     return undefined;
-  }
-
-  async verify(token: string) {
-    return true;
   }
 }

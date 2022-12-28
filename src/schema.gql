@@ -95,7 +95,6 @@ type Mutation {
   updateAdmin(updateAdminInput: UpdateAdminInput!): Admin!
   removeAdmin(id: String!): Admin!
   login(loginAdminInput: LoginAdminInput!): String!
-  verifyAdminToken: String!
 }
 
 input CreateChildrenInput {
