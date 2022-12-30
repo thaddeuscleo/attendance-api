@@ -18,8 +18,14 @@ export class EventsService {
     });
   }
 
-  findAll() {
-    return this.prisma.event.findMany();
+  findAll(skip: number, take: number) {
+    return this.prisma.event.findMany({
+      skip,
+      take,
+      orderBy: {
+        startDateTime: 'desc',
+      },
+    });
   }
 
   findOne(id: string) {

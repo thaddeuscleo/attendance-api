@@ -74,7 +74,7 @@ type Query {
   children(id: String!): Children!
   categories: [Category!]!
   category(id: String!): Category!
-  events: [Event!]!
+  events(skip: Int, take: Int): [Event!]!
   event(id: String!): Event!
   admins: [Admin!]!
   admin(id: String!): Admin!

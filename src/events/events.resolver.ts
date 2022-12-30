@@ -5,6 +5,7 @@ import {
   Args,
   ResolveField,
   Parent,
+  Int,
 } from '@nestjs/graphql';
 import { EventsService } from './events.service';
 import { Event } from './entities/event.entity';
@@ -26,8 +27,13 @@ export class EventsResolver {
 
   @Query(() => [Event], { name: 'events' })
   @UseGuards(GqlAuthGuard)
-  findAll() {
-    return this.eventsService.findAll();
+  findAll(
+    @Args('skip', { type: () => Int, nullable: true, defaultValue: undefined })
+    skip?: number,
+    @Args('take', { type: () => Int, nullable: true, defaultValue: undefined })
+    take?: number,
+  ) {
+    return this.eventsService.findAll(skip, take);
   }
 
   @Query(() => Event, { name: 'event' })
