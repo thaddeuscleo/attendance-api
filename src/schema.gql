@@ -30,7 +30,7 @@ type Children {
   bornDate: DateTime!
 
   """Children category"""
-  category: Category!
+  category: Category
 
   """Events attended by the children"""
   events: [Event!]!

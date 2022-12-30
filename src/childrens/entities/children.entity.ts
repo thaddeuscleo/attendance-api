@@ -19,7 +19,7 @@ export class Children {
   @Field(() => Date, { description: 'Children borndate' })
   bornDate: Date;
 
-  @Field(() => Category, { description: 'Children category' })
+  @Field(() => Category, { description: 'Children category', nullable: true })
   category?: Category;
 
   @Field(() => [Event], { description: 'Events attended by the children' })
