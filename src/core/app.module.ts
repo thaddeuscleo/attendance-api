@@ -12,8 +12,12 @@ import { AdminsModule } from 'src/admins/admins.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      playground: false,
-      introspection: false,
+      cors: {
+        origin: '*',
+        credential: true,
+      },
+      playground: true,
+      introspection: true,
     }),
     ChildrensModule,
     CategoriesModule,
