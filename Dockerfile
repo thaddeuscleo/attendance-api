@@ -16,9 +16,6 @@ RUN npm i -g @nestjs/cli
 # Creates a "dist" folder with the production build
 RUN npm run build
 
-# Uninstall Dependencies
-RUN npm uninstall -g @nestjs/cli
-
 FROM node:19-alpine3.16 AS production
 
 WORKDIR /usr/src/app
@@ -29,4 +26,4 @@ COPY --from=build /usr/src/app/dist/ /usr/src/app/dist/
 COPY --from=build /usr/src/app/package*.json /usr/src/app/
 
 # Run Backend
-CMD ["node", "dist/src/main"]
+CMD ["node", "dist/main"]

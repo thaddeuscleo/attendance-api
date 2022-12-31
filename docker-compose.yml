@@ -1,6 +1,19 @@
 version: '3'
 
 services:
+  growchildren-api:
+    container_name: growchildren-api
+    image: growchildren-api:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: production
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    depends_on:
+      - 'postgres'
+
   postgres:
     container_name: postgres
     image: postgres:12
