@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from './../prisma/prisma.service';
 import { CreateEventInput } from './dto/create-event.input';
 import { RemoveChildrenOnEventInput } from './dto/remove-children-on-event-input';
 import { UpdateEventInput } from './dto/update-event.input';

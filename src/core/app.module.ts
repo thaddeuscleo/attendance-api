@@ -5,7 +5,7 @@ import { join } from 'path';
 import { EventsModule } from './../events/events.module';
 import { CategoriesModule } from './../categories/categories.module';
 import { ChildrensModule } from './../childrens/childrens.module';
-import { AdminsModule } from 'src/admins/admins.module';
+import { AdminsModule } from './../admins/admins.module';
 
 @Module({
   imports: [

@@ -12,7 +12,7 @@ import { Event } from './entities/event.entity';
 import { CreateEventInput } from './dto/create-event.input';
 import { UpdateEventInput } from './dto/update-event.input';
 import { UseGuards } from '@nestjs/common';
-import { GqlAuthGuard } from 'src/auth/gql-auth-guard.guard';
+import { GqlAuthGuard } from './../auth/gql-auth-guard.guard';
 import { RemoveChildrenOnEventInput } from './dto/remove-children-on-event-input';
 
 @Resolver(() => Event)

@@ -6,7 +6,7 @@ import { UpdateAdminInput } from './dto/update-admin.input';
 import { LoginAdminInput } from './dto/login-admin.input';
 import { AuthService } from './../auth/auth.service';
 import { UseGuards } from '@nestjs/common';
-import { GqlAuthGuard } from 'src/auth/gql-auth-guard.guard';
+import { GqlAuthGuard } from './../auth/gql-auth-guard.guard';
 
 @Resolver(() => Admin)
 export class AdminsResolver {

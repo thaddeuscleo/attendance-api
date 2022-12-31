@@ -11,7 +11,7 @@ import { Category } from './entities/category.entity';
 import { CreateCategoryInput } from './dto/create-category.input';
 import { UpdateCategoryInput } from './dto/update-category.input';
 import { UseGuards } from '@nestjs/common';
-import { GqlAuthGuard } from 'src/auth/gql-auth-guard.guard';
+import { GqlAuthGuard } from './../auth/gql-auth-guard.guard';
 
 @Resolver(() => Category)
 export class CategoriesResolver {

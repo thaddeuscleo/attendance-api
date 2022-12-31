@@ -1,5 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Event } from 'src/events/entities/event.entity';
+import { Event } from './../../events/entities/event.entity';
 import { Category } from './../../categories/entities/category.entity';
 
 @ObjectType()

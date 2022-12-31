@@ -12,7 +12,7 @@ import { CreateChildrenInput } from './dto/create-children.input';
 import { UpdateChildrenInput } from './dto/update-children.input';
 import { Category } from './../categories/entities/category.entity';
 import { UseGuards } from '@nestjs/common';
-import { GqlAuthGuard } from 'src/auth/gql-auth-guard.guard';
+import { GqlAuthGuard } from './../auth/gql-auth-guard.guard';
 
 @Resolver(() => Children)
 export class ChildrensResolver {
