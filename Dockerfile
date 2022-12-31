@@ -1,6 +1,8 @@
 
 FROM node:19-alpine3.16 AS build
 
+EXPOSE 3000
+
 # Create app directory
 WORKDIR /usr/src/app
 
