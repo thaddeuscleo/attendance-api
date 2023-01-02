@@ -12,12 +12,18 @@ COPY . .
 
 # Install app dependencies
 RUN npm ci --omit=dev && npm cache clean --force
-RUN npx prisma generate
 RUN npm i -g @nestjs/cli
+
+# Migrate Database Changes
+RUN npx prisma generate
+RUN npx prisma migrate deploy
+RUN npx prisma db push
 
 # Creates a "dist" folder with the production build
 RUN npm run build
 
+
+# === Build for Production ===
 FROM node:19-alpine3.16 AS production
 
 WORKDIR /usr/src/app

@@ -1,4 +1,4 @@
-# fly.toml file generated for growchildren-api on 2022-12-31T15:01:25+07:00
+# fly.toml file generated for growchildren-api on 2023-01-02T19:23:18+07:00
 
 app = "growchildren-api"
 kill_signal = "SIGINT"
@@ -23,7 +23,7 @@ processes = []
     type = "connections"
 
   [[services.ports]]
-    force_https = false
+    force_https = true
     handlers = ["http"]
     port = 80
 
