@@ -2,6 +2,8 @@
 FROM node:19-alpine3.16 AS build
 
 EXPOSE 3000
+ARG DATABASE_URL_ARG
+ENV DATABASE_URL=${DATABASE_URL_ARG}
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -11,12 +13,11 @@ COPY package*.json ./
 COPY . .
 
 # Install app dependencies
-RUN npm ci --omit=dev && npm cache clean --force
 RUN npm i -g @nestjs/cli
+RUN npm ci --omit=dev && npm cache clean --force
 
 # Migrate Database Changes
 RUN npx prisma generate
-RUN npx prisma migrate deploy
 RUN npx prisma db push
 
 # Creates a "dist" folder with the production build

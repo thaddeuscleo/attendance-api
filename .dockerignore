@@ -13,3 +13,5 @@ docker-composse.yml
 .prettier*
 .gitignore
 README.md
+
+.env
